@@ -1,0 +1,30 @@
+name: Build GG Decor AI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Android Mod
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download source code
+        uses: actions/checkout@v4
+
+      - name: Build Geode Mod
+        id: build
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          sdk: given
+          target: Android64
+          build-config: Release
+
+      - name: Upload mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: GG-Decor-AI-Android
+          path: ${{ steps.build.outputs.build-output }}
