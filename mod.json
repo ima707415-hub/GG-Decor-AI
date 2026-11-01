@@ -1,12 +1,11 @@
 {
-  "geode": "4.0.0",
+  "geode": "v1.8.0",
   "gd": {
-    "win": "2.2081",
     "android": "2.2081"
   },
   "id": "777gdonline.gg-decor-ai",
   "name": "GG Decor AI",
-  "version": "1.0.0",
+  "version": "v0.1.0",
   "developer": "777GDONLINE",
-  "description": "AI-powered decoration style transfer for Geometry Dash levels."
+  "description": "AI decoration style transfer"
 }
