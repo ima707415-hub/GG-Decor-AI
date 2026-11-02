@@ -1,5 +1,5 @@
 #include <Geode/Geode.hpp>
-#include <Geode/modify/MenuLayer.hpp>
+#include <Geode/modify/EditorUI.hpp>
 
 using namespace geode::prelude;
 
@@ -7,24 +7,23 @@ using namespace geode::prelude;
 // Author: 777GDONLINE
 // Version: 0.2.0
 
-class $modify(GGDecorMenu, MenuLayer) {
+class $modify(GGDecorEditor, EditorUI) {
 
-    bool init() {
-        if (!MenuLayer::init()) {
+    bool init(LevelEditorLayer* levelEditor) {
+        if (!EditorUI::init(levelEditor)) {
             return false;
         }
 
         auto button = CCMenuItemSpriteExtra::create(
             ButtonSprite::create("GG Decor AI"),
             this,
-            menu_selector(GGDecorMenu::onOpenGGDecor)
+            menu_selector(GGDecorEditor::onOpenGGDecor)
         );
 
         auto menu = CCMenu::create();
         menu->addChild(button);
         menu->setPosition(
-            CCDirector::sharedDirector()
-                ->getWinSize() / 2
+            CCDirector::sharedDirector()->getWinSize() / 2
         );
 
         this->addChild(menu);
@@ -35,8 +34,8 @@ class $modify(GGDecorMenu, MenuLayer) {
     void onOpenGGDecor(CCObject*) {
         FLAlertLayer::create(
             "GG Decor AI - EXPERIMENTAL",
-            "This mod is experimental and may break your level.<cr/><cr/>Please make a copy of your level before using it.",
-            "I UNDERSTAND"
+            "GG Decor AI is running in experimental mode.",
+            "OK"
         )->show();
     }
 };
